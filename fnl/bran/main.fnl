@@ -1,9 +1,9 @@
-(module bran.init
+(module bran.main
   {require { a aniseed.string 
              core aniseed.core
              nvim aniseed.nvim}}) 
 
-(fn build-list [mystring range ?sep]
+(defn build-list [mystring range ?sep]
   "build a list of one or more line(s)"
   (var x [""])
   (let [opt (or ?sep "\n")]
@@ -16,7 +16,7 @@
         (tset x 1 (.. (. x 1) mystring i opt)))))
   x)
 
-(fn cursor-line-pos []
+(defn cursor-line-pos []
   "Return the cursor's current line number"
   (let [pos (nvim.win_get_cursor 0)]
     (. pos 1)))
@@ -24,6 +24,11 @@
 (var lines (build-list "user_0" 10 "\n"))
 (let [pos (+ 1 (cursor-line-pos))]
   (nvim.buf_set_lines 0 pos pos false lines))
+
+(defn main []
+  (nvim.ex.command_
+    :-nargs=3 :Bran :lua
+    "require('bran.main')['build-list'](<q-args>)"))
 
 ; This works. Now I need to figure out how to
 ; 1. Figure out how to pass args to function 
