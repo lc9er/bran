@@ -1,6 +1,6 @@
 local _0_0 = nil
 do
-  local name_0_ = "example.main"
+  local name_0_ = "bran.init"
   local loaded_0_ = package.loaded[name_0_]
   local module_0_ = nil
   if ("table" == type(loaded_0_)) then
@@ -15,24 +15,23 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  _0_0["aniseed/local-fns"] = {}
-  return {}
+  _0_0["aniseed/local-fns"] = {require = {a = "aniseed.string", nvim = "aniseed.nvim"}}
+  return {require("aniseed.string"), require("aniseed.nvim")}
 end
 local _1_ = _2_(...)
+local a = _1_[1]
+local nvim = _1_[2]
 do local _ = ({nil, _0_0, {{}, nil}})[2] end
-local init = nil
-do
-  local v_0_ = nil
-  do
-    local v_0_0 = nil
-    local function init0()
-      return print("Hello, World!")
-    end
-    v_0_0 = init0
-    _0_0["init"] = v_0_0
-    v_0_ = v_0_0
+local function build_list(mystring, range, _3fsep)
+  local x = ""
+  for i = 1, range do
+    x = (x .. a.join({mystring, i, (_3fsep or "\n")}))
   end
-  _0_0["aniseed/locals"]["init"] = v_0_
-  init = v_0_
+  return x
 end
-return nil
+print(build_list("user_0", 10, ","))
+local function cursor_line_pos()
+  local pos = nvim.win_get_cursor(0)
+  return pos[1]
+end
+return cursor_line_pos()
