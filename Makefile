@@ -12,7 +12,7 @@ compile:
 	## Aniseed at runtime, instead of just compile time.
 	## If your project modules are like myplugin.some-thing, you'd use myplugin
 	## in place of CHANGEME.
-	# deps/aniseed/scripts/embed.sh aniseed CHANGEME
+	deps/aniseed/scripts/embed.sh aniseed bran
 
 test:
 	rm -rf test/lua

@@ -1,7 +1,7 @@
 (module bran.main
-  {require { a aniseed.string 
-             core aniseed.core
-             nvim aniseed.nvim}}) 
+  {require { a bran.aniseed.string 
+             core bran.aniseed.core
+             nvim bran.aniseed.nvim}}) 
 
 (defn build-list [mystring range ?sep]
   "build a list of one or more line(s)"
@@ -21,14 +21,25 @@
   (let [pos (nvim.win_get_cursor 0)]
     (. pos 1)))
 
-(var lines (build-list "user_0" 10 "\n"))
-(let [pos (+ 1 (cursor-line-pos))]
-  (nvim.buf_set_lines 0 pos pos false lines))
+; (var lines (build-list "user_0" 10 "\n"))
+; (let [pos (+ 1 (cursor-line-pos))]
+;   (nvim.buf_set_lines 0 pos pos false lines))
 
-(defn main []
+(defn bran-bran [mystring range ?sep] 
+  (var lines (build-list mystring range ?sep))
+  (let [pos (+ 1 (cursor-line-pos))]
+    (nvim.buf_set_lines 0 pos pos false lines)))
+; (bran-bran "user_0" 10 ",")
+
+(defn echoerr [...]
+  (nvim.err_write (.. (a.join " " ["Bran:" ...]) "\n")))
+
+(defn init []
   (nvim.ex.command_
-    :-nargs=3 :Bran :lua
-    "require('bran.main')['build-list'](<q-args>)"))
+    :-nargs=* :-complete=command :Bran :lua
+    "require('bran.main')['bran-bran'](<f-args>)"))
+
+(init "user_0" 10 ":")
 
 ; This works. Now I need to figure out how to
 ; 1. Figure out how to pass args to function 
