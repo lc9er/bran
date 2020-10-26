@@ -37,9 +37,10 @@
                locals (-?> package.loaded
                            (. (tostring name))
                            (. :aniseed/locals))
-               local-fns (or (-?> package.loaded
-                                  (. (tostring name))
-                                  (. :aniseed/local-fns))
+               local-fns (or (and (not new-local-fns)
+                                  (-?> package.loaded
+                                       (. (tostring name))
+                                       (. :aniseed/local-fns)))
                              {})]
 
            (when new-local-fns
@@ -78,9 +79,16 @@
 
            `[,effects
              (local ,aliases
-               (do
-                 (tset ,module-sym :aniseed/local-fns ,local-fns)
-                 ,vals))])]
+               (let [(ok?# val#)
+                     (pcall
+                       (fn [] ,vals))]
+                 (if ok?#
+                   (do
+                     (tset ,module-sym :aniseed/local-fns ,local-fns)
+                     val#)
+                   (print val#))))
+             (local ,(sym "*module*") ,module-sym)
+             (local ,(sym "*module-name*") ,(tostring name))])]
        (. 2)))
 
 (fn def- [name value]
@@ -117,8 +125,16 @@
      (tset tests# ,(tostring name) (fn [,(sym :t)] ,...))
      (tset ,module-sym :aniseed/tests tests#)))
 
+(fn time [...]
+  `(let [start# (vim.loop.hrtime)
+         result# (do ,...)
+         end# (vim.loop.hrtime)]
+     (print (.. "Elapsed time: " (/ (- end# start#) 1000000) " msecs"))
+     result#))
+
 {:module module
  :def- def- :def def
  :defn- defn- :defn defn
  :defonce- defonce- :defonce defonce
- :deftest deftest}
+ :deftest deftest
+ :time time}

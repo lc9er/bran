@@ -15,13 +15,24 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  _0_0["aniseed/local-fns"] = {require = {fennel = "bran.aniseed.deps.fennel", nvim = "bran.aniseed.nvim"}}
-  return {require("bran.aniseed.deps.fennel"), require("bran.aniseed.nvim")}
+  local ok_3f_0_, val_0_ = nil, nil
+  local function _2_()
+    return {require("bran.aniseed.deps.fennel"), require("bran.aniseed.nvim")}
+  end
+  ok_3f_0_, val_0_ = pcall(_2_)
+  if ok_3f_0_ then
+    _0_0["aniseed/local-fns"] = {require = {fennel = "bran.aniseed.deps.fennel", nvim = "bran.aniseed.nvim"}}
+    return val_0_
+  else
+    return print(val_0_)
+  end
 end
 local _1_ = _2_(...)
 local fennel = _1_[1]
 local nvim = _1_[2]
-do local _ = ({nil, _0_0, {{}, nil}})[2] end
+local _2amodule_2a = _0_0
+local _2amodule_name_2a = "bran.aniseed.fennel"
+do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
 nvim.ex.let("&runtimepath = &runtimepath")
 fennel["path"] = string.gsub(string.gsub(string.gsub(package.path, "/lua/", "/fnl/"), ".lua;", ".fnl;"), ".lua$", ".fnl")
 return nil
