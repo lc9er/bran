@@ -15,25 +15,14 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  local ok_3f_0_, val_0_ = nil, nil
-  local function _2_()
-    return {require("bran.aniseed.core"), require("bran.aniseed.nvim"), require("bran.aniseed.string")}
-  end
-  ok_3f_0_, val_0_ = pcall(_2_)
-  if ok_3f_0_ then
-    _0_0["aniseed/local-fns"] = {require = {a = "bran.aniseed.core", nvim = "bran.aniseed.nvim", str = "bran.aniseed.string"}}
-    return val_0_
-  else
-    return print(val_0_)
-  end
+  _0_0["aniseed/local-fns"] = {require = {a = "bran.aniseed.core", nvim = "bran.aniseed.nvim", str = "bran.aniseed.string"}}
+  return {require("bran.aniseed.core"), require("bran.aniseed.nvim"), require("bran.aniseed.string")}
 end
 local _1_ = _2_(...)
 local a = _1_[1]
 local nvim = _1_[2]
 local str = _1_[3]
-local _2amodule_2a = _0_0
-local _2amodule_name_2a = "bran.aniseed.test"
-do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
+do local _ = ({nil, _0_0, {{}, nil}})[2] end
 local ok_3f = nil
 do
   local v_0_ = nil

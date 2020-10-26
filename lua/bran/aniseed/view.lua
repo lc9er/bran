@@ -15,23 +15,12 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  local ok_3f_0_, val_0_ = nil, nil
-  local function _2_()
-    return {require("bran.aniseed.deps.fennelview")}
-  end
-  ok_3f_0_, val_0_ = pcall(_2_)
-  if ok_3f_0_ then
-    _0_0["aniseed/local-fns"] = {require = {view = "bran.aniseed.deps.fennelview"}}
-    return val_0_
-  else
-    return print(val_0_)
-  end
+  _0_0["aniseed/local-fns"] = {require = {view = "bran.aniseed.deps.fennelview"}}
+  return {require("bran.aniseed.deps.fennelview")}
 end
 local _1_ = _2_(...)
 local view = _1_[1]
-local _2amodule_2a = _0_0
-local _2amodule_name_2a = "bran.aniseed.view"
-do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
+do local _ = ({nil, _0_0, {{}, nil}})[2] end
 local serialise = nil
 do
   local v_0_ = nil

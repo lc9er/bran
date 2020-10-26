@@ -15,22 +15,11 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  local ok_3f_0_, val_0_ = nil, nil
-  local function _2_()
-    return {}
-  end
-  ok_3f_0_, val_0_ = pcall(_2_)
-  if ok_3f_0_ then
-    _0_0["aniseed/local-fns"] = {}
-    return val_0_
-  else
-    return print(val_0_)
-  end
+  _0_0["aniseed/local-fns"] = {}
+  return {}
 end
 local _1_ = _2_(...)
-local _2amodule_2a = _0_0
-local _2amodule_name_2a = "example.main-test"
-do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
+do local _ = ({nil, _0_0, {{}, nil}})[2] end
 local tests_0_ = (_0_0["aniseed/tests"] or {})
 local function _3_(t)
   return t["="](1, 1, "1 should equal 1, I hope!")

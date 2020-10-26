@@ -15,23 +15,12 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  local ok_3f_0_, val_0_ = nil, nil
-  local function _2_()
-    return {require("bran.aniseed.view")}
-  end
-  ok_3f_0_, val_0_ = pcall(_2_)
-  if ok_3f_0_ then
-    _0_0["aniseed/local-fns"] = {require = {view = "bran.aniseed.view"}}
-    return val_0_
-  else
-    return print(val_0_)
-  end
+  _0_0["aniseed/local-fns"] = {require = {view = "bran.aniseed.view"}}
+  return {require("bran.aniseed.view")}
 end
 local _1_ = _2_(...)
 local view = _1_[1]
-local _2amodule_2a = _0_0
-local _2amodule_name_2a = "bran.aniseed.core"
-do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
+do local _ = ({nil, _0_0, {{}, nil}})[2] end
 math.randomseed(os.time())
 local rand = nil
 do

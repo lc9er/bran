@@ -15,25 +15,13 @@ do
   _0_0 = module_0_
 end
 local function _2_(...)
-  local ok_3f_0_, val_0_ = nil, nil
-  local function _2_()
-    return {require("bran.aniseed.compile"), require("bran.aniseed.nvim")}
-  end
-  ok_3f_0_, val_0_ = pcall(_2_)
-  if ok_3f_0_ then
-    _0_0["aniseed/local-fns"] = {require = {compile = "bran.aniseed.compile", nvim = "bran.aniseed.nvim"}}
-    return val_0_
-  else
-    return print(val_0_)
-  end
+  _0_0["aniseed/local-fns"] = {require = {compile = "bran.aniseed.compile", nvim = "bran.aniseed.nvim"}}
+  return {require("bran.aniseed.compile"), require("bran.aniseed.nvim")}
 end
 local _1_ = _2_(...)
 local compile = _1_[1]
 local nvim = _1_[2]
-local _2amodule_2a = _0_0
-local _2amodule_name_2a = "bran.aniseed.dotfiles"
-do local _ = ({nil, _0_0, {{}, nil, nil, nil}})[2] end
-nvim.out_write("Warning: aniseed.dotfiles is deprecated, see :help aniseed-dotfiles\n")
+do local _ = ({nil, _0_0, {{}, nil}})[2] end
 local config_dir = nil
 do
   local v_0_ = nvim.fn.stdpath("config")
