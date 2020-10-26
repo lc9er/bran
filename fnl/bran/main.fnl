@@ -1,5 +1,6 @@
 (module bran.main
   {require { a bran.aniseed.string 
+             core bran.aniseed.core
              nvim bran.aniseed.nvim}}) 
 
 (defn build-list [mystring range ?sep]
