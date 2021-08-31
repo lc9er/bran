@@ -16,11 +16,11 @@
 ;         (tset x 1 (.. (. x 1) mystring (string.format pad i) opt)))))
 ;   x)
 
-(defn build-list [mystring range pad sep]
+(defn build-list [mystring range ?pad ?sep]
   "build a list of one or more line(s)"
   (var x [])
   (for [i 0 (- range 1)]
-    (tset x 1 (.. (. x 1) mystring (string.format pad i) sep)))
+    (tset x 1 (.. (. x 1) mystring (string.format (or ?pad "%00d") i) (or ?sep "\n")))
   x)
 
 (defn cursor-line-pos []
@@ -30,7 +30,7 @@
 
 (defn bran-bran [mystring range ?pad ?sep] 
   "Build list w/supplied args"
-  (var lines (build-list mystring range (or ?pad "%00d") (or ?sep "\n"))
+  (var lines (build-list mystring range ?pad ?sep))
     (let [pos (+ 1 (cursor-line-pos))]
       (nvim.buf_set_lines 0 pos pos false lines))))
 
