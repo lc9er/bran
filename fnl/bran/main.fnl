@@ -19,8 +19,10 @@
 (defn build-list [mystring range ?pad ?sep]
   "build a list of one or more line(s)"
   (var x [])
-  (for [i 0 (- range 1)]
-    (tset x 1 (.. (. x 1) mystring (string.format (or ?pad "%00d") i) (or ?sep "\n")))
+  (let [opt (or ?sep "\n")
+        p   (or ?pad "%00d")]
+    (for [i 0 (- range 1)]
+      (tset x 1 (.. (. x 1) mystring (string.format p i) opt))))
   x)
 
 (defn cursor-line-pos []
