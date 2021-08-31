@@ -3,25 +3,25 @@
                   core bran.aniseed.core
                   nvim bran.aniseed.nvim}}) 
 
-(defn build-list [mystring range pad sep]
-  "build a list of one or more line(s)"
-  (var x [""])
-  (let [opt sep]
-    (if (= opt "\n")
-      ; each line is a value in the seq table
-      (for [i 1 range]
-        (tset x i (.. mystring (string.format pad i))))
-      ; concat everything into one val in the table
-      (for [i 1 range]
-        (tset x 1 (.. (. x 1) mystring (string.format pad i) opt)))))
-  x)
-
 ; (defn build-list [mystring range pad sep]
 ;   "build a list of one or more line(s)"
-;   (var x [])
-;   (for [i 0 (- range 1)]
-;     (tset x 1 (.. (. x 1) mystring (string.format pad i) sep)))
+;   (var x [""])
+;   (let [opt sep]
+;     (if (= opt "\n")
+;       ; each line is a value in the seq table
+;       (for [i 1 range]
+;         (tset x i (.. mystring (string.format pad i))))
+;       ; concat everything into one val in the table
+;       (for [i 1 range]
+;         (tset x 1 (.. (. x 1) mystring (string.format pad i) opt)))))
 ;   x)
+
+(defn build-list [mystring range pad sep]
+  "build a list of one or more line(s)"
+  (var x [])
+  (for [i 0 (- range 1)]
+    (tset x 1 (.. (. x 1) mystring (string.format pad i) sep)))
+  x)
 
 (defn cursor-line-pos []
   "Return the cursor's current line number"
