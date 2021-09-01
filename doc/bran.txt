@@ -1,0 +1,62 @@
+ .----------------.  .----------------.  .----------------.  .-----------------.
+| .--------------. || .--------------. || .--------------. || .--------------. |
+| |   ______     | || |  _______     | || |      __      | || | ____  _____  | |
+| |  |_   _ \    | || | |_   __ \    | || |     /  \     | || ||_   \|_   _| | |
+| |    | |_) |   | || |   | |__) |   | || |    / /\ \    | || |  |   \ | |   | |
+| |    |  __'.   | || |   |  __ /    | || |   / ____ \   | || |  | |\ \| |   | |
+| |   _| |__) |  | || |  _| |  \ \_  | || | _/ /    \ \_ | || | _| |_\   |_  | |
+| |  |_______/   | || | |____| |___| | || ||____|  |____|| || ||_____|\____| | |
+| |              | || |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------' 
+
+==============================================================================
+CONTENTS                                                       *bran-contents*
+
+    1. Introduction ............................. |bran-introduction|
+
+==============================================================================
+INTRODUCTION                                               *bran-introduction*
+
+Bran is a simple helper function, allowing you to generate lists of test data. 
+It works much like seq in that it generates a list of incremented numbers that
+are appended to a string. Bran also supports optional C-style print formatting
+and separator characters. Output begins at current line.
+
+Default values:
+
+formatting - none
+separator - \n
+
+==============================================================================
+EXAMPLES                                                       *bran-examples*
+
+:Bran {string} {# of iterations} {optional: format} {optional: separator}
+
+:Bran UserID_ 5 
+
+UserID_1
+UserID_2
+UserID_3
+UserID_4
+UserID_5
+
+:Bran AccountNo- 10 %04d
+
+AccountNo-0001
+AccountNo-0002
+AccountNo-0003
+AccountNo-0004
+AccountNo-0005
+AccountNo-0006
+AccountNo-0007
+AccountNo-0008
+AccountNo-0009
+AccountNo-0010
+
+:Bran EmpBadge_ 5 %03d |
+
+EmpBadge_001|EmpBadge_002|EmpBadge_003|EmpBadge_004|EmpBadge_005|
+
+==============================================================================
+
