@@ -1,20 +1,20 @@
-                                                                          *bran*
+                                                                          bran
 
-  ____                  
- |  _ \                 
- | |_) |_ __ __ _ _ __  
- |  _ <| '__/ _` | '_ \ 
- | |_) | | | (_| | | | |
-   |____/|_|  \__,_|_| |_|
+                          ____                  
+                         |  _ \                 
+                         | |_) |_ __ __ _ _ __  
+                         |  _ <| '__/ _` | '_ \ 
+                         | |_) | | | (_| | | | |
+                         |____/|_|  \__,_|_| |_|
                         
 
 ==============================================================================
-CONTENTS                                                       *bran-contents*
+CONTENTS                                                         bran-contents
 
     1. Introduction ............................. |bran-introduction|
 
 ==============================================================================
-INTRODUCTION                                               *bran-introduction*
+INTRODUCTION                                                 bran-introduction
 
 Bran is a simple helper function, allowing you to generate lists of test data. 
 It works much like seq in that it generates a list of incremented numbers that
@@ -27,7 +27,7 @@ formatting - none
 separator - \n
 
 ==============================================================================
-EXAMPLES                                                       *bran-examples*
+EXAMPLES                                                         bran-examples
 
 :Bran {string} {# of iterations} {optional: format} {optional: separator}
 
