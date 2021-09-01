@@ -13,24 +13,24 @@ Examples:
 
 :Bran UserID_ 5 
 
-UserID_1
-UserID_2
-UserID_3
-UserID_4
-UserID_5
+UserID_1  
+UserID_2  
+UserID_3  
+UserID_4  
+UserID_5  
 
 :Bran AccountNo- 10 %04d
 
-AccountNo-0001
-AccountNo-0002
-AccountNo-0003
-AccountNo-0004
-AccountNo-0005
-AccountNo-0006
-AccountNo-0007
-AccountNo-0008
-AccountNo-0009
-AccountNo-0010
+AccountNo-0001  
+AccountNo-0002  
+AccountNo-0003  
+AccountNo-0004  
+AccountNo-0005  
+AccountNo-0006  
+AccountNo-0007  
+AccountNo-0008  
+AccountNo-0009  
+AccountNo-0010  
 
 :Bran EmpBadge_ 5 %03d |
 
