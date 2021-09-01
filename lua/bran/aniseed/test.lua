@@ -1,83 +1,104 @@
-local _0_0 = nil
+local _2afile_2a = "fnl/aniseed/test.fnl"
+local _1_
 do
-  local name_0_ = "bran.aniseed.test"
-  local loaded_0_ = package.loaded[name_0_]
-  local module_0_ = nil
-  if ("table" == type(loaded_0_)) then
-    module_0_ = loaded_0_
-  else
-    module_0_ = {}
-  end
-  module_0_["aniseed/module"] = name_0_
-  module_0_["aniseed/locals"] = (module_0_["aniseed/locals"] or {})
-  module_0_["aniseed/local-fns"] = (module_0_["aniseed/local-fns"] or {})
-  package.loaded[name_0_] = module_0_
-  _0_0 = module_0_
-end
-local function _2_(...)
-  _0_0["aniseed/local-fns"] = {require = {a = "bran.aniseed.core", nvim = "bran.aniseed.nvim", str = "bran.aniseed.string"}}
-  return {require("bran.aniseed.core"), require("bran.aniseed.nvim"), require("bran.aniseed.string")}
-end
-local _1_ = _2_(...)
-local a = _1_[1]
-local nvim = _1_[2]
-local str = _1_[3]
-do local _ = ({nil, _0_0, {{}, nil}})[2] end
-local ok_3f = nil
-do
-  local v_0_ = nil
+  local name_4_auto = "bran.aniseed.test"
+  local module_5_auto
   do
-    local v_0_0 = nil
-    local function ok_3f0(_3_0)
-      local _4_ = _3_0
-      local tests = _4_["tests"]
-      local tests_passed = _4_["tests-passed"]
+    local x_6_auto = _G.package.loaded[name_4_auto]
+    if ("table" == type(x_6_auto)) then
+      module_5_auto = x_6_auto
+    else
+      module_5_auto = {}
+    end
+  end
+  module_5_auto["aniseed/module"] = name_4_auto
+  module_5_auto["aniseed/locals"] = ((module_5_auto)["aniseed/locals"] or {})
+  do end (module_5_auto)["aniseed/local-fns"] = ((module_5_auto)["aniseed/local-fns"] or {})
+  do end (_G.package.loaded)[name_4_auto] = module_5_auto
+  _1_ = module_5_auto
+end
+local autoload
+local function _3_(...)
+  return (require("bran.aniseed.autoload")).autoload(...)
+end
+autoload = _3_
+local function _6_(...)
+  local ok_3f_21_auto, val_22_auto = nil, nil
+  local function _5_()
+    return {autoload("bran.aniseed.core"), autoload("bran.aniseed.fs"), autoload("bran.aniseed.nvim"), autoload("bran.aniseed.string")}
+  end
+  ok_3f_21_auto, val_22_auto = pcall(_5_)
+  if ok_3f_21_auto then
+    _1_["aniseed/local-fns"] = {autoload = {a = "bran.aniseed.core", fs = "bran.aniseed.fs", nvim = "bran.aniseed.nvim", str = "bran.aniseed.string"}}
+    return val_22_auto
+  else
+    return print(val_22_auto)
+  end
+end
+local _local_4_ = _6_(...)
+local a = _local_4_[1]
+local fs = _local_4_[2]
+local nvim = _local_4_[3]
+local str = _local_4_[4]
+local _2amodule_2a = _1_
+local _2amodule_name_2a = "bran.aniseed.test"
+do local _ = ({nil, _1_, nil, {{}, nil, nil, nil}})[2] end
+local ok_3f
+do
+  local v_23_auto
+  do
+    local v_25_auto
+    local function ok_3f0(_8_)
+      local _arg_9_ = _8_
+      local tests = _arg_9_["tests"]
+      local tests_passed = _arg_9_["tests-passed"]
       return (tests == tests_passed)
     end
-    v_0_0 = ok_3f0
-    _0_0["ok?"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = ok_3f0
+    _1_["ok?"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["ok?"] = v_0_
-  ok_3f = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["ok?"] = v_23_auto
+  ok_3f = v_23_auto
 end
-local display_results = nil
+local display_results
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function display_results0(results, prefix)
       do
-        local _3_ = results
-        local assertions = _3_["assertions"]
-        local assertions_passed = _3_["assertions-passed"]
-        local tests = _3_["tests"]
-        local tests_passed = _3_["tests-passed"]
-        local function _4_()
-          if ok_3f(results) then
-            return "OK"
-          else
-            return "FAILED"
-          end
+        local _let_10_ = results
+        local assertions = _let_10_["assertions"]
+        local assertions_passed = _let_10_["assertions-passed"]
+        local tests = _let_10_["tests"]
+        local tests_passed = _let_10_["tests-passed"]
+        local _11_
+        if ok_3f(results) then
+          _11_ = "OK"
+        else
+          _11_ = "FAILED"
         end
-        a.println((prefix .. " " .. _4_() .. " " .. tests_passed .. "/" .. tests .. " tests and " .. assertions_passed .. "/" .. assertions .. " assertions passed"))
+        a.println((prefix .. " " .. _11_ .. " " .. tests_passed .. "/" .. tests .. " tests and " .. assertions_passed .. "/" .. assertions .. " assertions passed"))
       end
       return results
     end
-    v_0_0 = display_results0
-    _0_0["display-results"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = display_results0
+    _1_["display-results"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["display-results"] = v_0_
-  display_results = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["display-results"] = v_23_auto
+  display_results = v_23_auto
 end
-local run = nil
+local run
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function run0(mod_name)
-      local mod = package.loaded[mod_name]
+      local mod = _G.package.loaded[mod_name]
       local tests = (a["table?"](mod) and mod["aniseed/tests"])
       if a["table?"](tests) then
         local results = {["assertions-passed"] = 0, ["tests-passed"] = 0, assertions = 0, tests = #tests}
@@ -86,31 +107,30 @@ do
           a.update(results, "tests", a.inc)
           do
             local prefix = ("[" .. mod_name .. "/" .. label .. "]")
-            local fail = nil
-            local function _3_(desc, ...)
+            local fail
+            local function _13_(desc, ...)
               test_failed = true
-              local function _4_(...)
-                if desc then
-                  return (" (" .. desc .. ")")
-                else
-                  return ""
-                end
+              local _14_
+              if desc then
+                _14_ = (" (" .. desc .. ")")
+              else
+                _14_ = ""
               end
-              return a.println((str.join({prefix, " ", ...}) .. _4_(...)))
+              return a.println((str.join({prefix, " ", ...}) .. _14_))
             end
-            fail = _3_
-            local begin = nil
-            local function _4_()
+            fail = _13_
+            local begin
+            local function _16_()
               return a.update(results, "assertions", a.inc)
             end
-            begin = _4_
-            local pass = nil
-            local function _5_()
+            begin = _16_
+            local pass
+            local function _17_()
               return a.update(results, "assertions-passed", a.inc)
             end
-            pass = _5_
-            local t = nil
-            local function _6_(e, r, desc)
+            pass = _17_
+            local t
+            local function _18_(e, r, desc)
               begin()
               if (e == r) then
                 return pass()
@@ -118,7 +138,7 @@ do
                 return fail(desc, "Expected '", a["pr-str"](e), "' but received '", a["pr-str"](r), "'")
               end
             end
-            local function _7_(r, desc)
+            local function _20_(r, desc)
               begin()
               if r then
                 return pass()
@@ -126,7 +146,7 @@ do
                 return fail(desc, "Expected truthy result but received '", a["pr-str"](r), "'")
               end
             end
-            local function _8_(e, r, desc)
+            local function _22_(e, r, desc)
               begin()
               local se = a["pr-str"](e)
               local sr = a["pr-str"](r)
@@ -136,14 +156,14 @@ do
                 return fail(desc, "Expected (with pr) '", se, "' but received '", sr, "'")
               end
             end
-            t = {["="] = _6_, ["ok?"] = _7_, ["pr="] = _8_}
-            local _9_0, _10_0 = nil, nil
-            local function _11_()
+            t = {["="] = _18_, ["ok?"] = _20_, ["pr="] = _22_}
+            local _24_, _25_ = nil, nil
+            local function _26_()
               return f(t)
             end
-            _9_0, _10_0 = pcall(_11_)
-            if ((_9_0 == false) and (nil ~= _10_0)) then
-              local err = _10_0
+            _24_, _25_ = pcall(_26_)
+            if ((_24_ == false) and (nil ~= _25_)) then
+              local err = _25_
               fail("Exception: ", err)
             end
           end
@@ -154,58 +174,61 @@ do
         return display_results(results, ("[" .. mod_name .. "]"))
       end
     end
-    v_0_0 = run0
-    _0_0["run"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = run0
+    _1_["run"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["run"] = v_0_
-  run = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["run"] = v_23_auto
+  run = v_23_auto
 end
-local run_all = nil
+local run_all
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function run_all0()
-      local function _3_(totals, results)
+      local function _30_(totals, results)
         for k, v in pairs(results) do
           totals[k] = (v + totals[k])
         end
         return totals
       end
-      return display_results(a.reduce(_3_, {["assertions-passed"] = 0, ["tests-passed"] = 0, assertions = 0, tests = 0}, a.filter(a["table?"], a.map(run, a.keys(package.loaded)))), "[total]")
+      return display_results(a.reduce(_30_, {["assertions-passed"] = 0, ["tests-passed"] = 0, assertions = 0, tests = 0}, a.filter(a["table?"], a.map(run, a.keys(_G.package.loaded)))), "[total]")
     end
-    v_0_0 = run_all0
-    _0_0["run-all"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = run_all0
+    _1_["run-all"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["run-all"] = v_0_
-  run_all = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["run-all"] = v_23_auto
+  run_all = v_23_auto
 end
-local suite = nil
+local suite
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function suite0()
-      nvim.ex.redir_("> test/results.txt")
-      local function _3_(path)
-        return require(string.gsub(string.match(path, "^test/fnl/(.-).fnl$"), "/", "."))
+      do
+        local sep = fs["path-sep"]
+        local function _31_(path)
+          return require(string.gsub(string.match(path, ("^test" .. sep .. "fnl" .. sep .. "(.-).fnl$")), sep, "."))
+        end
+        a["run!"](_31_, nvim.fn.globpath(("test" .. sep .. "fnl"), "**/*-test.fnl", false, true))
       end
-      a["run!"](_3_, nvim.fn.globpath("test/fnl", "**/*-test.fnl", false, true))
-      local results = run_all()
-      nvim.ex.redir("END")
-      if ok_3f(results) then
+      if ok_3f(run_all()) then
         return nvim.ex.q()
       else
         return nvim.ex.cq()
       end
     end
-    v_0_0 = suite0
-    _0_0["suite"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = suite0
+    _1_["suite"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["suite"] = v_0_
-  suite = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["suite"] = v_23_auto
+  suite = v_23_auto
 end
 return nil

@@ -1,22 +1,41 @@
-local _0_0 = nil
+local _2afile_2a = "fnl/aniseed/nvim.fnl"
+local _1_
 do
-  local name_0_ = "bran.aniseed.nvim"
-  local loaded_0_ = package.loaded[name_0_]
-  local module_0_ = nil
-  if ("table" == type(loaded_0_)) then
-    module_0_ = loaded_0_
-  else
-    module_0_ = require("bran.aniseed.deps.nvim")
+  local name_4_auto = "bran.aniseed.nvim"
+  local module_5_auto
+  do
+    local x_6_auto = _G.package.loaded[name_4_auto]
+    if ("table" == type(x_6_auto)) then
+      module_5_auto = x_6_auto
+    else
+      module_5_auto = require("bran.aniseed.deps.nvim")
+    end
   end
-  module_0_["aniseed/module"] = name_0_
-  module_0_["aniseed/locals"] = (module_0_["aniseed/locals"] or {})
-  module_0_["aniseed/local-fns"] = (module_0_["aniseed/local-fns"] or {})
-  package.loaded[name_0_] = module_0_
-  _0_0 = module_0_
+  module_5_auto["aniseed/module"] = name_4_auto
+  module_5_auto["aniseed/locals"] = ((module_5_auto)["aniseed/locals"] or {})
+  do end (module_5_auto)["aniseed/local-fns"] = ((module_5_auto)["aniseed/local-fns"] or {})
+  do end (_G.package.loaded)[name_4_auto] = module_5_auto
+  _1_ = module_5_auto
 end
-local function _2_(...)
-  _0_0["aniseed/local-fns"] = {}
-  return {}
+local autoload
+local function _3_(...)
+  return (require("bran.aniseed.autoload")).autoload(...)
 end
-local _1_ = _2_(...)
-return ({nil, _0_0, {{}, nil}})[2]
+autoload = _3_
+local function _6_(...)
+  local ok_3f_21_auto, val_22_auto = nil, nil
+  local function _5_()
+    return {}
+  end
+  ok_3f_21_auto, val_22_auto = pcall(_5_)
+  if ok_3f_21_auto then
+    _1_["aniseed/local-fns"] = {}
+    return val_22_auto
+  else
+    return print(val_22_auto)
+  end
+end
+local _local_4_ = _6_(...)
+local _2amodule_2a = _1_
+local _2amodule_name_2a = "bran.aniseed.nvim"
+return ({nil, _1_, nil, {{}, nil, nil, nil}})[2]

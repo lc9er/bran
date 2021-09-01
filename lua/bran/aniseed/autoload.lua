@@ -1,7 +1,7 @@
-local _2afile_2a = "fnl/aniseed/view.fnl"
+local _2afile_2a = "fnl/aniseed/autoload.fnl"
 local _1_
 do
-  local name_4_auto = "bran.aniseed.view"
+  local name_4_auto = "bran.aniseed.autoload"
   local module_5_auto
   do
     local x_6_auto = _G.package.loaded[name_4_auto]
@@ -37,22 +37,42 @@ local function _6_(...)
 end
 local _local_4_ = _6_(...)
 local _2amodule_2a = _1_
-local _2amodule_name_2a = "bran.aniseed.view"
+local _2amodule_name_2a = "bran.aniseed.autoload"
 do local _ = ({nil, _1_, nil, {{}, nil, nil, nil}})[2] end
-local serialise
+local autoload0
 do
   local v_23_auto
   do
     local v_25_auto
-    local function _8_(...)
-      return require("bran.aniseed.deps.fennelview")(...)
+    local function autoload1(name)
+      local res = {["aniseed/autoload-enabled?"] = true, ["aniseed/autoload-module"] = false}
+      local function ensure()
+        if res["aniseed/autoload-module"] then
+          return res["aniseed/autoload-module"]
+        else
+          local m = require(name)
+          do end (res)["aniseed/autoload-module"] = m
+          return m
+        end
+      end
+      local function _9_(t, ...)
+        return ensure()(...)
+      end
+      local function _10_(t, k)
+        return ensure()[k]
+      end
+      local function _11_(t, k, v)
+        ensure()[k] = v
+        return nil
+      end
+      return setmetatable(res, {__call = _9_, __index = _10_, __newindex = _11_})
     end
-    v_25_auto = _8_
-    _1_["serialise"] = v_25_auto
+    v_25_auto = autoload1
+    _1_["autoload"] = v_25_auto
     v_23_auto = v_25_auto
   end
   local t_24_auto = (_1_)["aniseed/locals"]
-  t_24_auto["serialise"] = v_23_auto
-  serialise = v_23_auto
+  t_24_auto["autoload"] = v_23_auto
+  autoload0 = v_23_auto
 end
 return nil

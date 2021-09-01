@@ -19,27 +19,31 @@
 (fn module [name new-local-fns initial-mod]
   `(-> [(local ,module-sym
           (let [name# ,(tostring name)
-                loaded# (. package.loaded name#)
-                module# (if (= :table (type loaded#))
-                          loaded#
-                          ,(or initial-mod {}))]
+                module# (let [x# (. _G.package.loaded name#)]
+                          (if (= :table (type x#))
+                            x#
+                            ,(or initial-mod {})))]
             (tset module# :aniseed/module name#)
             (tset module# :aniseed/locals (or (. module# :aniseed/locals) {}))
             (tset module# :aniseed/local-fns (or (. module# :aniseed/local-fns) {}))
-            (tset package.loaded name# module#)
+            (tset _G.package.loaded name# module#)
             module#))
 
         ,module-sym
 
+        ;; Meta! Autoload the autoload function, so it's only loaded when used.
+        (local ,(sym :autoload)
+          (fn [...] ((. (require :aniseed.autoload) :autoload) ...)))
+
         ,(let [aliases []
                vals []
                effects []
-               locals (-?> package.loaded
-                           (. (tostring name))
-                           (. :aniseed/locals))
-               local-fns (or (-?> package.loaded
-                                  (. (tostring name))
-                                  (. :aniseed/local-fns))
+               pkg (let [x (. _G.package.loaded (tostring name))]
+                     (when (= :table (type x))
+                       x))
+               locals (-?> pkg (. :aniseed/locals))
+               local-fns (or (and (not new-local-fns)
+                                  (?. pkg :aniseed/local-fns))
                              {})]
 
            (when new-local-fns
@@ -73,20 +77,28 @@
              (sorted-each
                (fn [alias val]
                  (table.insert aliases (sym alias))
-                 (table.insert vals `(-> ,module-sym (. :aniseed/locals) (. ,alias))))
+                 (table.insert vals `(. ,module-sym :aniseed/locals ,alias)))
                locals))
 
            `[,effects
              (local ,aliases
-               (do
-                 (tset ,module-sym :aniseed/local-fns ,local-fns)
-                 ,vals))])]
+               (let [(ok?# val#)
+                     (pcall
+                       (fn [] ,vals))]
+                 (if ok?#
+                   (do
+                     (tset ,module-sym :aniseed/local-fns ,local-fns)
+                     val#)
+                   (print val#))))
+             (local ,(sym "*module*") ,module-sym)
+             (local ,(sym "*module-name*") ,(tostring name))])]
        (. 2)))
 
 (fn def- [name value]
   `(local ,name
-     (let [v# ,value]
-       (tset (. ,module-sym :aniseed/locals) ,(tostring name) v#)
+     (let [v# ,value
+           t# (. ,module-sym :aniseed/locals)]
+       (tset t# ,(tostring name) v#)
        v#)))
 
 (fn def [name value]
@@ -104,7 +116,7 @@
 
 (fn defonce- [name value]
   `(def- ,name
-     (or (. (. ,module-sym :aniseed/locals) ,(tostring name))
+     (or (. ,module-sym :aniseed/locals ,(tostring name))
          ,value)))
 
 (fn defonce [name value]
@@ -117,8 +129,16 @@
      (tset tests# ,(tostring name) (fn [,(sym :t)] ,...))
      (tset ,module-sym :aniseed/tests tests#)))
 
+(fn time [...]
+  `(let [start# (vim.loop.hrtime)
+         result# (do ,...)
+         end# (vim.loop.hrtime)]
+     (print (.. "Elapsed time: " (/ (- end# start#) 1000000) " msecs"))
+     result#))
+
 {:module module
  :def- def- :def def
  :defn- defn- :defn defn
  :defonce- defonce- :defonce defonce
- :deftest deftest}
+ :deftest deftest
+ :time time}

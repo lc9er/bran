@@ -1,76 +1,96 @@
-local _0_0 = nil
+local _2afile_2a = "fnl/aniseed/string.fnl"
+local _1_
 do
-  local name_0_ = "bran.aniseed.string"
-  local loaded_0_ = package.loaded[name_0_]
-  local module_0_ = nil
-  if ("table" == type(loaded_0_)) then
-    module_0_ = loaded_0_
-  else
-    module_0_ = {}
-  end
-  module_0_["aniseed/module"] = name_0_
-  module_0_["aniseed/locals"] = (module_0_["aniseed/locals"] or {})
-  module_0_["aniseed/local-fns"] = (module_0_["aniseed/local-fns"] or {})
-  package.loaded[name_0_] = module_0_
-  _0_0 = module_0_
-end
-local function _2_(...)
-  _0_0["aniseed/local-fns"] = {require = {a = "bran.aniseed.core"}}
-  return {require("bran.aniseed.core")}
-end
-local _1_ = _2_(...)
-local a = _1_[1]
-do local _ = ({nil, _0_0, {{}, nil}})[2] end
-local join = nil
-do
-  local v_0_ = nil
+  local name_4_auto = "bran.aniseed.string"
+  local module_5_auto
   do
-    local v_0_0 = nil
+    local x_6_auto = _G.package.loaded[name_4_auto]
+    if ("table" == type(x_6_auto)) then
+      module_5_auto = x_6_auto
+    else
+      module_5_auto = {}
+    end
+  end
+  module_5_auto["aniseed/module"] = name_4_auto
+  module_5_auto["aniseed/locals"] = ((module_5_auto)["aniseed/locals"] or {})
+  do end (module_5_auto)["aniseed/local-fns"] = ((module_5_auto)["aniseed/local-fns"] or {})
+  do end (_G.package.loaded)[name_4_auto] = module_5_auto
+  _1_ = module_5_auto
+end
+local autoload
+local function _3_(...)
+  return (require("bran.aniseed.autoload")).autoload(...)
+end
+autoload = _3_
+local function _6_(...)
+  local ok_3f_21_auto, val_22_auto = nil, nil
+  local function _5_()
+    return {autoload("bran.aniseed.core")}
+  end
+  ok_3f_21_auto, val_22_auto = pcall(_5_)
+  if ok_3f_21_auto then
+    _1_["aniseed/local-fns"] = {autoload = {a = "bran.aniseed.core"}}
+    return val_22_auto
+  else
+    return print(val_22_auto)
+  end
+end
+local _local_4_ = _6_(...)
+local a = _local_4_[1]
+local _2amodule_2a = _1_
+local _2amodule_name_2a = "bran.aniseed.string"
+do local _ = ({nil, _1_, nil, {{}, nil, nil, nil}})[2] end
+local join
+do
+  local v_23_auto
+  do
+    local v_25_auto
     local function join0(...)
       local args = {...}
-      local function _4_(...)
+      local function _9_(...)
         if (2 == a.count(args)) then
           return args
         else
           return {"", a.first(args)}
         end
       end
-      local _3_ = _4_(...)
-      local sep = _3_[1]
-      local xs = _3_[2]
+      local _let_8_ = _9_(...)
+      local sep = _let_8_[1]
+      local xs = _let_8_[2]
       local len = a.count(xs)
       local result = {}
       if (len > 0) then
         for i = 1, len do
           local x = xs[i]
-          local _5_0 = nil
+          local _10_
           if ("string" == type(x)) then
-            _5_0 = x
+            _10_ = x
           elseif (nil == x) then
-            _5_0 = x
+            _10_ = x
           else
-            _5_0 = a["pr-str"](x)
+            _10_ = a["pr-str"](x)
           end
-          if _5_0 then
-            table.insert(result, _5_0)
+          if _10_ then
+            table.insert(result, _10_)
           else
           end
         end
       end
       return table.concat(result, sep)
     end
-    v_0_0 = join0
-    _0_0["join"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = join0
+    _1_["join"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["join"] = v_0_
-  join = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["join"] = v_23_auto
+  join = v_23_auto
 end
-local split = nil
+local split
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function split0(s, pat)
       local done_3f = false
       local acc = {}
@@ -87,71 +107,76 @@ do
       end
       return acc
     end
-    v_0_0 = split0
-    _0_0["split"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = split0
+    _1_["split"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["split"] = v_0_
-  split = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["split"] = v_23_auto
+  split = v_23_auto
 end
-local blank_3f = nil
+local blank_3f
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function blank_3f0(s)
       return (a["empty?"](s) or not string.find(s, "[^%s]"))
     end
-    v_0_0 = blank_3f0
-    _0_0["blank?"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = blank_3f0
+    _1_["blank?"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["blank?"] = v_0_
-  blank_3f = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["blank?"] = v_23_auto
+  blank_3f = v_23_auto
 end
-local triml = nil
+local triml
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function triml0(s)
       return string.gsub(s, "^%s*(.-)", "%1")
     end
-    v_0_0 = triml0
-    _0_0["triml"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = triml0
+    _1_["triml"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["triml"] = v_0_
-  triml = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["triml"] = v_23_auto
+  triml = v_23_auto
 end
-local trimr = nil
+local trimr
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function trimr0(s)
       return string.gsub(s, "(.-)%s*$", "%1")
     end
-    v_0_0 = trimr0
-    _0_0["trimr"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = trimr0
+    _1_["trimr"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["trimr"] = v_0_
-  trimr = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["trimr"] = v_23_auto
+  trimr = v_23_auto
 end
-local trim = nil
+local trim
 do
-  local v_0_ = nil
+  local v_23_auto
   do
-    local v_0_0 = nil
+    local v_25_auto
     local function trim0(s)
       return string.gsub(s, "^%s*(.-)%s*$", "%1")
     end
-    v_0_0 = trim0
-    _0_0["trim"] = v_0_0
-    v_0_ = v_0_0
+    v_25_auto = trim0
+    _1_["trim"] = v_25_auto
+    v_23_auto = v_25_auto
   end
-  _0_0["aniseed/locals"]["trim"] = v_0_
-  trim = v_0_
+  local t_24_auto = (_1_)["aniseed/locals"]
+  t_24_auto["trim"] = v_23_auto
+  trim = v_23_auto
 end
 return nil
