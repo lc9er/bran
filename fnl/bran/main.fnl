@@ -1,7 +1,7 @@
 (module bran.main
-        {require { a aniseed.string 
-                  core aniseed.core
-                  nvim aniseed.nvim}}) 
+        {require { a bran.aniseed.string 
+                  core bran.aniseed.core
+                  nvim bran.aniseed.nvim}}) 
 
 (def this :bran.main)
 

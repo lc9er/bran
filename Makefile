@@ -1,6 +1,6 @@
 .PHONY: deps compile test
 
-default: deps compile test
+default: compile
 
 deps:
 	scripts/dep.sh Olical aniseed origin/master
