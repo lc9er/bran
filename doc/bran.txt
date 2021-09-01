@@ -1,4 +1,4 @@
-                                                                          bran
+                                                                        *bran*
 
                           ____
                          |  _ \
@@ -9,12 +9,12 @@
                         
 
 ==============================================================================
-CONTENTS                                                         bran-contents
+CONTENTS                                                       *bran-contents*
 
     1. Introduction ............................. |bran-introduction|
 
 ==============================================================================
-INTRODUCTION                                                 bran-introduction
+INTRODUCTION                                               *bran-introduction*
 
 Bran is a simple helper function, allowing you to generate lists of test data. 
 It works much like seq in that it generates a list of incremented numbers that
@@ -27,7 +27,7 @@ formatting - none
 separator - \n
 
 ==============================================================================
-EXAMPLES                                                         bran-examples
+EXAMPLES                                                       *bran-examples*
 
 :Bran {string} {# of iterations} {optional: format} {optional: separator}
 
