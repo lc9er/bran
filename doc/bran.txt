@@ -12,6 +12,7 @@
 CONTENTS                                                       *bran-contents*
 
     1. Introduction ............................. |bran-introduction|
+    2. Examples ................................. |bran-examples|
 
 ==============================================================================
 INTRODUCTION                                               *bran-introduction*
@@ -52,9 +53,9 @@ AccountNo-0008
 AccountNo-0009
 AccountNo-0010
 
-:Bran EmpBadge_ 5 %03d |
+:Bran EmpBadge_ 5 %03d ;
 
-EmpBadge_001|EmpBadge_002|EmpBadge_003|EmpBadge_004|EmpBadge_005|
+EmpBadge_001;EmpBadge_002;EmpBadge_003;EmpBadge_004;EmpBadge_005;
 
 ==============================================================================
 
